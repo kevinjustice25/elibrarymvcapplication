@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="home/index :: #header">
+</head>
+<body>
+<div class="container">
+<div th:replace="home/index :: #navbar-section"></div>
+<div id="addbookform" class="container">
+    <form action="#" th:action="@{/addbook}" th:object="${book}" method="post">
+        <div class=" form-group">
+            <label for="title">Title of Book:</label>
+            <label th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
+                   class="validation-message"></label>
+            <input class="form-control" name="title" type="text" id="title" th:field="*{title}">
+        </div>
+
+        <div class="row form-group">
+            <label for="fee">Late Fee Per Day Charge:</label>
+            <label th:if="${#fields.hasErrors('fee')}" th:errors="*{fee}"
+                   class="validation-message"></label>
+            <input class="form-control" name="fee" type="text" id="fee" th:field="*{fee}">
+        </div>
+        <div class="row form-group">
+            <label for="datepublished">Date Book Published:</label>
+            <label th:if="${#fields.hasErrors('datepublished')}" th:errors="*{datepublished}"
+                   class="validation-message"></label>
+            <input class="form-control" name="datepublished" type="date" id="datepublished" th:field="*{datepublished}">
+        </div>
+        <div class="row justify-content-center"></div>
+        <button class="btn btn-primary" type="submit">Add New Book</button>
+    </form>
+</div>
+</div>
+</body>
+<footer th:replace="home/index :: #footer-section">
+</footer>
+</html>

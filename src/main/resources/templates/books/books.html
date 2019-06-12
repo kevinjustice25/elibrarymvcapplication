@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="home/index :: #header">
+</head>
+<body>
+<div class="container">
+    <div th:replace="home/index :: #navbar-section"></div>
+
+        <table class="table table-striped">
+            <thead>
+            <th>ID Number</th>
+            <th>Title</th>
+            <th>Fee</th>
+            <th>Date Published</th>
+            <th>Actions</th>
+            </thead>
+            <tbody>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.bookid}"></td>
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.fee}"></td>
+                <td th:text="${book.datepublished}"></td>
+                <td>
+                    <a th:href="@{'/book/' + ${book.bookid}}">Edit</a>&nbsp;
+                    <a th:href="@{'/book/delete/' + ${book.bookid}}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<footer th:replace="home/index :: #footer-section">
+</footer>
+</html>
